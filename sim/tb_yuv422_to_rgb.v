@@ -74,12 +74,12 @@ initial
 begin
     $dumpfile("wave.vcd");
     $dumpvars(0,tb_yuv422_to_rgb);
-    $readmemh("./yuv_source/y.txt",mem_y);
-    $readmemh("./yuv_source/u.txt",mem_u);
-    $readmemh("./yuv_source/v.txt",mem_v);
-    fr=$fopen("./rgb_recover/r.txt","w");
-    fg=$fopen("./rgb_recover/g.txt","w");
-    fb=$fopen("./rgb_recover/b.txt","w");
+    $readmemh("./y.txt",mem_y);
+    $readmemh("./u.txt",mem_u);
+    $readmemh("./v.txt",mem_v);
+    fr=$fopen("./r.txt","w");
+    fg=$fopen("./g.txt","w");
+    fb=$fopen("./b.txt","w");
 
     @(posedge clk);
     @(posedge clk);

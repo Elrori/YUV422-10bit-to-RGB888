@@ -43,9 +43,9 @@ def main():
     # Make the YUV file for verilog module
     img = plt.imread('1.jpg')
     img_yuv=RGB2YUV(img)
-    fy=open("./yuv_source/y.txt",'w+')
-    fu=open("./yuv_source/u.txt",'w+')
-    fv=open("./yuv_source/v.txt",'w+')
+    fy=open("./y.txt",'w+')
+    fu=open("./u.txt",'w+')
+    fv=open("./v.txt",'w+')
     for x in range(img.shape[0]):
         for y in range(img.shape[1]):
             fy.write(hex(img_yuv[x,y,0])[2:]+'\n')
@@ -59,9 +59,9 @@ def main():
     os.system('vvp tb_yuv422_to_rgb.vvp');
 
     # Read the  RGB data from verilog model output
-    fr=open("./rgb_recover/r.txt",'r+')
-    fg=open("./rgb_recover/g.txt",'r+')
-    fb=open("./rgb_recover/b.txt",'r+')
+    fr=open("./r.txt",'r+')
+    fg=open("./g.txt",'r+')
+    fb=open("./b.txt",'r+')
     rgb=np.empty((img.shape[0],img.shape[1],img.shape[2]),dtype=np.uint8)
     for x in range(img.shape[0]):
         for y in range(img.shape[1]):
@@ -79,8 +79,8 @@ def main():
     fb.close()
 
     os.system('gtkwave wave.gtkw');
-    os.system('del rgb_recover\\*.txt');
-    os.system('del yuv_source\\*.txt');
+    os.system('del .\\*.txt');
+    os.system('del .\\*.txt');
     os.system('del wave.vcd');
     os.system('del tb_yuv422_to_rgb.vvp');
 if __name__ == "__main__":
